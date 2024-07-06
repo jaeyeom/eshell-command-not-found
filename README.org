@@ -1,0 +1,101 @@
+#+title: eshell-command-not-found
+* eshell-command-not-found
+** Introduction
+
+Have you missed the =command-not-found= feature in your other shell when using
+=eshell=? The =eshell-command-not-found= package provides =command-not-found=
+integration within =eshell=.
+
+The =command-not-found= package suggests the installation of packages when a
+command isn't found.
+
+For example, if =tput= is not installed, running it will suggest the command to
+install the required package.
+
+#+begin_example
+  ~ λ tput
+  The program tput is not installed. Install it by executing:
+   pkg install ncurses-utils
+  ~ λ
+#+end_example
+
+** Installation
+
+*** Prerequisite
+
+You should have =command-not-found= already installed on your system. The
+feature is implemented through a function called =command_not_found_handle=. You
+can check if this function is defined by using the following command in =bash=:
+
+#+begin_src bash
+  declare -f command_not_found_handle
+#+end_src
+
+Otherwise, try running a command that is not installed in your system shell. If
+you don't see any package installation suggestions, please install
+=command-not-found=.
+
+1. *Debian/Ubuntu:*
+   #+begin_src sh
+   sudo apt-get install command-not-found
+   sudo update-command-not-found
+   #+end_src
+
+2. *Fedora:*
+   #+begin_src sh
+   sudo dnf install PackageKit-command-not-found
+   #+end_src
+
+3. *Arch Linux:*
+   #+begin_src sh
+   sudo pacman -S pkgfile
+   sudo pkgfile --update
+   #+end_src
+
+4. *openSUSE:*
+   #+begin_src sh
+   sudo zypper install command-not-found
+   #+end_src
+
+After installing =command-not-found=, ensure it is configured properly by trying
+to run a command that does not exist. If it provides suggestions, then it's set
+up correctly.
+
+*** MELPA
+=eshell-command-not-found= can be installed with =M-x package-install
+eshell-command-not-found= after setting up [[http://melpa.org][MELPA]].
+
+*** Manuall Installation
+Add =eshell-command-not-found.el= to your =load-path=.
+
+** Setup
+Turn on =eshell-command-not-found-mode=.
+
+#+begin_src elisp
+  (require 'eshell-command-not-found)
+  (eshell-command-not-found-mode 1)
+#+end_src
+
+** Security Considerations
+
+When using =eshell-command-not-found=, it relies on the external
+=command-not-found= tool from your system to provide package installation
+suggestions. Here are a few security considerations to keep in mind:
+
+1. *Third-Party Repositories*: Ensure that your system's package manager is
+   configured to use reputable repositories. The suggestions you receive come
+   from the metadata provided by these repositories, and fetching from
+   untrustworthy sources could lead to compromised software.
+
+2. *System Commands Execution*: The integration executes commands in the
+   background to determine the correct packages. This can potentially expose
+   your environment to risks if the process is manipulated. Only enable
+   =eshell-command-not-found= in trusted environments.
+
+3. *Privilege Escalation*: Installing packages typically requires elevated
+   privileges (e.g., =sudo=). Be cautious of blindly following installation
+   suggestions, especially in contexts where you should not exercise superuser
+   privileges.
+
+By being aware of these considerations and carefully managing your environment,
+you can use =eshell-command-not-found= effectively and securely.
