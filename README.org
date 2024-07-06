@@ -1,5 +1,4 @@
 #+title: eshell-command-not-found
-* eshell-command-not-found
 ** Introduction
 
 Have you missed the =command-not-found= feature in your other shell when using
