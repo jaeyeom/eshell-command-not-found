@@ -13,7 +13,7 @@ build:
 test:
 	$(EMACS) --batch -L . -L $(TEST_DIR) -l test-eshell-command-not-found.el -eval '(ert-run-tests-batch-and-exit "$(MATCH)")'
 
-NEEDED_PACKAGES=cl-lib let-alist compat package-lint
+NEEDED_PACKAGES=package-lint
 
 INIT_PACKAGE_EL="(progn \
   (require 'package) \
