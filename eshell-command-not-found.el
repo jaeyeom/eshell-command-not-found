@@ -6,7 +6,7 @@
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: convenience
 ;; URL: https://github.com/jaeyeom/eshell-command-not-found
-;; Version: 0.1
+;; Version: 0.1.1
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -51,7 +51,7 @@
 
 ;;;###autoload
 (defcustom eshell-command-not-found-command
-  (seq-find 'file-executable-p
+  (seq-find #'file-executable-p
             '("/data/data/com.termux/files/usr/libexec/termux/command-not-found"
               "/usr/lib/command-not-found"
               "/usr/libexec/pk-command-not-found"))
