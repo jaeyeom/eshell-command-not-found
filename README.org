@@ -37,18 +37,26 @@ you don't see any package installation suggestions, please install
 1. *Debian/Ubuntu:*
    #+begin_src sh
    sudo apt-get install command-not-found
-   sudo update-command-not-found
+   sudo apt update
    #+end_src
 
 2. *Fedora:*
    #+begin_src sh
    sudo dnf install PackageKit-command-not-found
    #+end_src
+   =dbus= is required in Fedora.
 
 3. *Arch Linux:*
    #+begin_src sh
    sudo pacman -S pkgfile
    sudo pkgfile --update
+   #+end_src
+   In Arch Linux, =pkgfile= needs a command-line option =-bv --= to be more
+   useful. You need to create your own script and customize
+   =eshell-command-not-found-command= until a nicer implementation is added.
+   #+begin_src sh
+     #!/bin/sh
+     /usr/sbin/pkgfile -bv -- "$1"
    #+end_src
 
 4. *openSUSE:*

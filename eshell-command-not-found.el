@@ -6,7 +6,7 @@
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: convenience
 ;; URL: https://github.com/jaeyeom/eshell-command-not-found
-;; Version: 0.1.1
+;; Version: 0.1.2
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -54,7 +54,8 @@
   (seq-find #'file-executable-p
             '("/data/data/com.termux/files/usr/libexec/termux/command-not-found"
               "/usr/lib/command-not-found"
-              "/usr/libexec/pk-command-not-found"))
+              "/usr/libexec/pk-command-not-found"
+              "/usr/bin/command-not-found"))
   "Path to command-not-found executable."
   :type 'string
   :group 'eshell-mode)
