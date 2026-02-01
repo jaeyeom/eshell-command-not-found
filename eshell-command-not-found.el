@@ -63,11 +63,11 @@
 (defun eshell-command-not-found (command)
   "Hook to run command-not-found script in eshell.
 Argument COMMAND is the not found command."
-  (error (string-trim-right
-          (shell-command-to-string
-           (format "%s %s"
-                   eshell-command-not-found-command
-                   (shell-quote-argument command))))))
+  (error "%s" (string-trim-right
+               (shell-command-to-string
+                (format "%s %s"
+                        eshell-command-not-found-command
+                        (shell-quote-argument command))))))
 
 ;;;###autoload
 (define-minor-mode eshell-command-not-found-mode
