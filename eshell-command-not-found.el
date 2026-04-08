@@ -48,6 +48,8 @@
 ;;; Code:
 
 (require 'esh-ext)
+(require 'seq)
+(require 'subr-x)
 
 ;;;###autoload
 (defcustom eshell-command-not-found-command
